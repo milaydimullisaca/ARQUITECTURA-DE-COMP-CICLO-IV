@@ -1,0 +1,14 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity ejemplo02 is
+    port (
+        A, B, C: in std_logic;
+        F: out std_logic
+    );
+end ejemplo02;
+
+architecture rtl of ejemplo02 is
+begin
+    F <= (not A and not B) or (not B and C) or (A and not C);
+end rtl;
