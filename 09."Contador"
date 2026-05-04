@@ -1,0 +1,16 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity ejemplo09 is
+    port(
+        A, B : in std_logic_vector(3 downto 0);
+        MAYOR, IGUAL, MENOR : out std_logic
+    );
+end ejemplo09;
+
+architecture rtl of ejemplo09 is
+begin
+    MAYOR <= '1' when A > B else '0';
+    IGUAL <= '1' when A = B else '0';
+    MENOR <= '1' when A < B else '0';
+end rtl;
