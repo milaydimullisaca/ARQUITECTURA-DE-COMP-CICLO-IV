@@ -1,0 +1,19 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity ejemplo06 is
+    port(
+        I : in std_logic_vector(3 downto 0);
+        Y : out std_logic_vector(1 downto 0)
+    );
+end ejemplo06;
+
+architecture rtl of ejemplo06 is
+begin
+    with I select
+        Y <= "00" when "0001",
+             "01" when "0010",
+             "10" when "0100",
+             "11" when others;
+end rtl;
+
