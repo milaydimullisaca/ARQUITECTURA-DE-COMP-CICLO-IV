@@ -1,0 +1,28 @@
+const int pinLM35 = A0;
+const int pinRele = 4;
+
+const float temperaturaUmbral = 28.0; 
+
+void setup() {
+  pinMode(pinRele, OUTPUT);
+  Serial.begin(9600);
+  digitalWrite(pinRele, LOW);
+}
+
+void loop() {
+  int lecturaAnaloga = analogRead(pinLM35);
+  float voltaje = lecturaAnaloga * (5.0 / 1023.0);
+  float temperatura = voltaje * 100.0;
+  
+  Serial.print("Temperatura actual: ");
+  Serial.print(temperatura);
+  Serial.println(" °C");
+  
+  if (temperatura >= temperaturaUmbral) {
+    digitalWrite(pinRele, HIGH);
+  } else {
+    digitalWrite(pinRele, LOW);
+  }
+  
+  delay(500);
+}
